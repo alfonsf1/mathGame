@@ -33,15 +33,15 @@ class button():
 			
 		return False
 
-def redrawWindow():
+def drawMainMenu():
 	windowSurface.blit(background,(0,0))
+	windowSurface.blit(rotatedSurf1, rotatedRect1)
 	additionButton.draw(windowSurface, (BLUE))
 	subtractionButton.draw(windowSurface, (BLUE))
 	#added DC
 	multiplicationButton.draw(windowSurface, (BLUE))
 	exitButton.draw(windowSurface, (WHITE))
-
-
+ 
 # Set up pygame.
 pygame.init()
 
@@ -74,9 +74,17 @@ subtractionButton = button((LIGHT_GREEN), 300, 310, 200, 100, 'Subtract')
 multiplicationButton = button((TEAL), 300, 420, 200, 100, 'Multiply')
 exitButton = button((WHITE), 750, 0, 50, 50, 'X')
 
+degrees1 = 0
+titleFont = pygame.font.Font('freesansbold.ttf', 100)
+titleSurf1 = titleFont.render('Simple Math!!', True, WHITE)
+rotatedSurf1 = pygame.transform.rotate(titleSurf1, degrees1)
+rotatedRect1 = rotatedSurf1.get_rect()
+rotatedRect1.center = (window_width / 2, window_height / 8)
+
+
 # Run the game loop.
 while True:
-	redrawWindow()
+	drawMainMenu()
 	pygame.display.update()
 	#Check for the QUIT event.
 	for event in pygame.event.get():
