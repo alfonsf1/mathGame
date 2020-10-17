@@ -1,4 +1,5 @@
 import pygame, sys, time
+import pygame as py
 from pygame.locals import *
 
 
@@ -33,7 +34,7 @@ class button():
 		return False
 
 def redrawWindow():
-	windowSurface.fill((WHITE))
+	windowSurface.blit(background,(0,0))
 	additionButton.draw(windowSurface, (BLUE))
 	subtractionButton.draw(windowSurface, (BLUE))
 	#added DC
@@ -63,6 +64,9 @@ BLACK = (0, 0, 0)
 PURPLE = (204, 153, 255)
 LIGHT_GREEN = (102, 255, 102)
 TEAL = (0, 255, 255)
+
+background = py.image.load("bg.png") ## Load the image file
+background = py.transform.scale(background,(window_width,window_height)) ## Make it the same size as the screen
 							#l/r 
 additionButton = button((PURPLE), 300, 200, 200, 100, 'Add')
 subtractionButton = button((LIGHT_GREEN), 300, 310, 200, 100, 'Subtract')
