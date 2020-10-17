@@ -42,6 +42,44 @@ def drawMainMenu():
 	multiplicationButton.draw(windowSurface, (BLUE))
 	exitButton.draw(windowSurface, (WHITE))
  
+def mainMenuOptions(pos):
+	if event.type == QUIT:
+		pygame.quit()
+		sys.exit()
+		
+	if event.type == pygame.MOUSEBUTTONDOWN:
+		if additionButton.isOver(pos):
+			print('clicked add button')
+		if subtractionButton.isOver(pos):
+			print('clicked subtract button')
+			#added DC
+		if multiplicationButton.isOver(pos):
+			print('clicked multiply button')
+		if exitButton.isOver(pos):
+			pygame.quit()
+			sys.exit()
+
+
+	if event.type == pygame.MOUSEMOTION:
+		if additionButton.isOver(pos):
+			additionButton.color = (WHITE)
+		else:
+			additionButton.color = (PURPLE)
+
+		if subtractionButton.isOver(pos):
+			subtractionButton.color = (WHITE)
+		else:
+			subtractionButton.color = (LIGHT_GREEN)
+			#added DC
+		if multiplicationButton.isOver(pos):
+			multiplicationButton.color = (WHITE)
+		else:
+			multiplicationButton.color = (TEAL)
+		if exitButton.isOver(pos):
+			exitButton.color = (RED)
+		else:
+			exitButton.color = (WHITE)
+ 
 # Set up pygame.
 pygame.init()
 
@@ -89,43 +127,9 @@ while True:
 	#Check for the QUIT event.
 	for event in pygame.event.get():
 		pos = pygame.mouse.get_pos()
-
-		if event.type == QUIT:
-			pygame.quit()
-			sys.exit()
-		
-		if event.type == pygame.MOUSEBUTTONDOWN:
-			if additionButton.isOver(pos):
-				print('clicked add button')
-			if subtractionButton.isOver(pos):
-				print('clicked subtract button')
-				#added DC
-			if multiplicationButton.isOver(pos):
-				print('clicked multiply button')
-			if exitButton.isOver(pos):
-				pygame.quit()
-				sys.exit()
+		mainMenuOptions(pos)
 
 
-		if event.type == pygame.MOUSEMOTION:
-			if additionButton.isOver(pos):
-				additionButton.color = (WHITE)
-			else:
-				additionButton.color = (PURPLE)
-
-			if subtractionButton.isOver(pos):
-				subtractionButton.color = (WHITE)
-			else:
-				subtractionButton.color = (LIGHT_GREEN)
-				#added DC
-			if multiplicationButton.isOver(pos):
-				multiplicationButton.color = (WHITE)
-			else:
-				multiplicationButton.color = (TEAL)
-			if exitButton.isOver(pos):
-				exitButton.color = (RED)
-			else:
-				exitButton.color = (WHITE)
 				
 				
 
