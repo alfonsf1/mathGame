@@ -42,6 +42,21 @@ def drawMainMenu():
 	multiplicationButton.draw(windowSurface, (BLUE))
 	exitButton.draw(windowSurface, (WHITE))
  
+def arithmiticWindow():
+    number = 1
+    while number <5:
+	    windowSurface.blit(background,(0,0))
+	    windowSurface.blit(rotatedSurf1, rotatedRect1)
+	    choice1Button.draw(windowSurface, (BLUE))
+	    choice2Button.draw(windowSurface, (BLUE))
+	    #added DC
+	    choice3button.draw(windowSurface, (BLUE))
+	    exitButton.draw(windowSurface, (WHITE))
+	    pygame.display.update()
+ 
+
+    
+ 
 def mainMenuOptions(pos):
 	if event.type == QUIT:
 		pygame.quit()
@@ -50,6 +65,7 @@ def mainMenuOptions(pos):
 	if event.type == pygame.MOUSEBUTTONDOWN:
 		if additionButton.isOver(pos):
 			print('clicked add button')
+			arithmiticWindow()
 		if subtractionButton.isOver(pos):
 			print('clicked subtract button')
 			#added DC
@@ -79,6 +95,23 @@ def mainMenuOptions(pos):
 			exitButton.color = (RED)
 		else:
 			exitButton.color = (WHITE)
+		if choice1Button.isOver(pos):
+			choice1Button.color = (WHITE)
+		else:
+			choice1Button.color = (PURPLE)
+
+		if choice2Button.isOver(pos):
+			choice2Button.color = (WHITE)
+		else:
+			choice2Button.color = (LIGHT_GREEN)
+			#added DC
+		if choice3button.isOver(pos):
+			choice3button.color = (WHITE)
+		else:
+			choice3button.color = (TEAL)
+   
+
+		
  
 # Set up pygame.
 pygame.init()
@@ -108,9 +141,14 @@ background = py.transform.scale(background,(window_width,window_height)) ## Make
 							#l/r 
 additionButton = button((PURPLE), 300, 200, 200, 100, 'Add')
 subtractionButton = button((LIGHT_GREEN), 300, 310, 200, 100, 'Subtract')
-#added DC
 multiplicationButton = button((TEAL), 300, 420, 200, 100, 'Multiply')
 exitButton = button((WHITE), 750, 0, 50, 50, 'X')
+
+
+choice1Button = button((PURPLE), 300, 200, 200, 100, 'choice 1')
+choice2Button = button((LIGHT_GREEN), 300, 310, 200, 100, 'choice 2')
+choice3button = button((TEAL), 300, 420, 200, 100, 'choice 3')
+
 
 degrees1 = 0
 titleFont = pygame.font.Font('freesansbold.ttf', 100)
