@@ -43,7 +43,7 @@ def drawMainMenu():
 	exitButton.draw(windowSurface, (WHITE))
  
 def arithmiticWindow(pos):
-
+	
 	windowSurface.blit(background,(0,0))
 	windowSurface.blit(rotatedSurf1, rotatedRect1)
 
@@ -145,15 +145,6 @@ TEAL = (0, 255, 255)
 background = py.image.load("bg.png") ## Load the image file
 background = py.transform.scale(background,(window_width,window_height)) ## Make it the same size as the screen
 							#l/r 
-additionButton = button((PURPLE), 300, 200, 200, 100, 'Add')
-subtractionButton = button((LIGHT_GREEN), 300, 310, 200, 100, 'Subtract')
-multiplicationButton = button((TEAL), 300, 420, 200, 100, 'Multiply')
-exitButton = button((WHITE), 750, 0, 50, 50, 'X')
-
-
-choice1Button = button((PURPLE), 300, 200, 200, 100, "choice 1")
-choice2Button = button((LIGHT_GREEN), 300, 310, 200, 100, "choice 2")
-choice3button = button((TEAL), 300, 420, 200, 100, "choice 3")
 
 
 degrees1 = 0
@@ -162,6 +153,29 @@ titleSurf1 = titleFont.render('Simple Math!!', True, WHITE)
 rotatedSurf1 = pygame.transform.rotate(titleSurf1, degrees1)
 rotatedRect1 = rotatedSurf1.get_rect()
 rotatedRect1.center = (window_width / 2, window_height / 8)
+
+
+additionButton = button((PURPLE), 300, 200, 200, 100, 'Add')
+subtractionButton = button((LIGHT_GREEN), 300, 310, 200, 100, 'Subtract')
+multiplicationButton = button((TEAL), 300, 420, 200, 100, 'Multiply')
+exitButton = button((WHITE), 750, 0, 50, 50, 'X')
+
+
+r1 = random.randint(0, 10) 
+r1string = str(r1)
+
+r2 = random.randint(0, 10) 
+r2string = str(r2)
+
+r3 = random.randint(0, 10) 
+r3string = str(r3)
+
+
+choice1Button = button((PURPLE), 300, 200, 200, 100, r1string)
+choice2Button = button((LIGHT_GREEN), 300, 310, 200, 100, r2string)
+choice3button = button((TEAL), 300, 420, 200, 100, r3string)
+
+
 
 
 # Run the game loop.
