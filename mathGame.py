@@ -1,4 +1,4 @@
-import pygame, sys, time
+import pygame, sys, time, random
 import pygame as py
 from pygame.locals import *
 
@@ -42,18 +42,24 @@ def drawMainMenu():
 	multiplicationButton.draw(windowSurface, (BLUE))
 	exitButton.draw(windowSurface, (WHITE))
  
-def arithmiticWindow():
-    number = 1
-    while number <5:
-	    windowSurface.blit(background,(0,0))
-	    windowSurface.blit(rotatedSurf1, rotatedRect1)
-	    choice1Button.draw(windowSurface, (BLUE))
-	    choice2Button.draw(windowSurface, (BLUE))
-	    #added DC
-	    choice3button.draw(windowSurface, (BLUE))
-	    exitButton.draw(windowSurface, (WHITE))
-	    pygame.display.update()
- 
+def arithmiticWindow(pos):
+
+	windowSurface.blit(background,(0,0))
+	windowSurface.blit(rotatedSurf1, rotatedRect1)
+
+	choice1Button.draw(windowSurface, (BLUE))
+	choice2Button.draw(windowSurface, (BLUE))
+	#added DC
+	choice3button.draw(windowSurface, (BLUE))
+	exitButton.draw(windowSurface, (WHITE))
+	pygame.display.update()
+
+	event_happened = False
+	while not event_happened:
+		event = pygame.event.wait()
+		if event.type == pygame.MOUSEBUTTONDOWN:
+			choice1Button.isOver(pos)
+			event_happened = True
 
     
  
@@ -65,7 +71,7 @@ def mainMenuOptions(pos):
 	if event.type == pygame.MOUSEBUTTONDOWN:
 		if additionButton.isOver(pos):
 			print('clicked add button')
-			arithmiticWindow()
+			arithmiticWindow(pos)
 		if subtractionButton.isOver(pos):
 			print('clicked subtract button')
 			#added DC
@@ -145,9 +151,9 @@ multiplicationButton = button((TEAL), 300, 420, 200, 100, 'Multiply')
 exitButton = button((WHITE), 750, 0, 50, 50, 'X')
 
 
-choice1Button = button((PURPLE), 300, 200, 200, 100, 'choice 1')
-choice2Button = button((LIGHT_GREEN), 300, 310, 200, 100, 'choice 2')
-choice3button = button((TEAL), 300, 420, 200, 100, 'choice 3')
+choice1Button = button((PURPLE), 300, 200, 200, 100, "choice 1")
+choice2Button = button((LIGHT_GREEN), 300, 310, 200, 100, "choice 2")
+choice3button = button((TEAL), 300, 420, 200, 100, "choice 3")
 
 
 degrees1 = 0
@@ -161,7 +167,7 @@ rotatedRect1.center = (window_width / 2, window_height / 8)
 # Run the game loop.
 while True:
 	drawMainMenu()
-	pygame.display.update()
+	#pygame.display.update()
 	#Check for the QUIT event.
 	for event in pygame.event.get():
 		pos = pygame.mouse.get_pos()
